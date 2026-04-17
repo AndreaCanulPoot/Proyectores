@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using System.Diagnostics;
 using WebApp.Models;
 
@@ -8,6 +9,13 @@ namespace WebApp.Controllers
     {
         public IActionResult Index()
         {
+            //Uso de ViewData
+            ViewData["id"] = "1";
+            ViewData["Marca"] = "Epson";
+            ViewData["Modelo"] = "XLight";
+            ViewData["NSerie"] = "123456";
+            ViewData["Situacion"] = "Bueno";
+            ViewData["FechaAlta"] = DateTime.Now.ToString("d");
             return View();
         }
 
