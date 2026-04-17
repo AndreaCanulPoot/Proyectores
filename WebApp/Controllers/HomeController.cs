@@ -9,14 +9,18 @@ namespace WebApp.Controllers
     {
         public IActionResult Index()
         {
-            //Uso de ViewBig
-            ViewBag.Id = "1";
-            ViewBag.Marca = "Epson";
-            ViewBag.Modelo = "XLight";
-            ViewBag.NSerie = "123456";
-            ViewBag.Situacion = "Bueno";
-            ViewBag.FechaAlta = DateTime.Now.ToString("d");
-            return View();
+            //Uso del modelo de modelos de la vista
+
+            var proyector = new Proyector()
+            {
+                Id = 1,
+                Marca = "Epson",
+                Modelo = "XLight",
+                NSerie = "123456",
+                Situacion = SituacionProyect.Bueno,
+                FechaAlta = DateTime.Now
+            };
+            return View(proyector);
         }
 
         public IActionResult Privacy()
