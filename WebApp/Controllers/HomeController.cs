@@ -10,7 +10,7 @@ namespace WebApp.Controllers
         public IActionResult Index()
         {
             var modelo = LoadData();
-            //var modelo = LoadData();
+            //var modelo = new List<Proyector>();
             return View(modelo);
         }
 
