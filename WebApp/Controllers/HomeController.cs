@@ -73,7 +73,7 @@ namespace WebApp.Controllers
         }
 
 
-        public IActionResult Privacy()
+        public IActionResult Create()
         {
             return View();
         }
