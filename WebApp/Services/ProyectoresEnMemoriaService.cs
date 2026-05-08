@@ -8,7 +8,7 @@ namespace WebApp.Services
 
         public void AddProyector(Proyector proyector)
         {
-            if (proyector == null) 
+            if (proyector != null) 
             { 
                 _proyectores.Add(proyector);
             }
