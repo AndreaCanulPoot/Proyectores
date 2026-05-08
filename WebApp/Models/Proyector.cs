@@ -13,7 +13,7 @@
 
     public enum SituacionProyect
     {
-        Bueno,
+        Bueno = 1,
         Regular,
         Malo
     }

@@ -2,80 +2,38 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Diagnostics;
 using WebApp.Models;
+using WebApp.Services;
 
 namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private IProyectoresService _service;
+        public HomeController() 
         {
-            var modelo = LoadData();
-            //var modelo = new List<Proyector>();
-            return View(modelo);
+            _service = new ProyectoresEnMemoriaService();
         }
 
-        private IEnumerable<Proyector> LoadData()
+
+        public IActionResult Index()
         {
-            var proyectores = new List<Proyector>();
-
-            proyectores.Add(new Proyector()
-            {
-                Id = 1,
-                Marca = "Epson",
-                Modelo = "XLight",
-                NSerie = "123456",
-                Situacion = SituacionProyect.Bueno,
-                FechaAlta = DateTime.Now
-            });
-
-            proyectores.Add(new Proyector()
-            {
-                Id = 2,
-                Marca = "Epson",
-                Modelo = "XLight",
-                NSerie = "567890",
-                Situacion = SituacionProyect.Bueno,
-                FechaAlta = DateTime.Now
-            });
-
-            proyectores.Add(new Proyector()
-            {
-                Id = 3,
-                Marca = "Epson",
-                Modelo = "Performer",
-                NSerie = "144556",
-                Situacion = SituacionProyect.Regular,
-                FechaAlta = DateTime.Now
-            });
-
-            proyectores.Add(new Proyector()
-            {
-                Id = 4,
-                Marca = "Epson",
-                Modelo = "XLight",
-                NSerie = "456789",
-                Situacion = SituacionProyect.Bueno,
-                FechaAlta = DateTime.Now
-            });
-
-            proyectores.Add(new Proyector()
-            {
-                Id = 5,
-                Marca = "Epson",
-                Modelo = "XLight",
-                NSerie = "234567",
-                Situacion = SituacionProyect.Bueno,
-                FechaAlta = DateTime.Now
-            });
-
-
-            return proyectores;
+            var modelo = _service.GetAll();
+            return View(modelo);
         }
 
 
         public IActionResult Create()
         {
-            return View();
+            Proyector proyector = new Proyector();
+            proyector.FechaAlta = DateTime.Now;
+            return View(proyector);
+        }
+
+        [HttpPost]
+        public IActionResult Create(Proyector proyector)
+        {
+            _service.AddProyector(proyector);
+            return RedirectToAction(nameof(Index));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
