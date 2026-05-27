@@ -3,15 +3,16 @@ using System.Data;
 using System.Diagnostics;
 using WebApp.Models;
 using WebApp.Services;
+using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
         private IProyectoresService _service;
-        public HomeController() 
+        public HomeController(IProyectoresService service) 
         {
-            _service = new ProyectoresEnMemoriaService();
+            _service = service;
         }
 
 
@@ -24,9 +25,9 @@ namespace WebApp.Controllers
 
         public IActionResult Create()
         {
-            Proyector proyector = new Proyector();
-            proyector.FechaAlta = DateTime.Now;
-            return View(proyector);
+            var modelo = new HomeCreateViewModel();
+            modelo.FechaAlta = DateTime.Now;
+            return View(modelo);
         }
 
         [HttpPost]
