@@ -4,6 +4,8 @@ namespace WebApp.Models
 {
     public class Proyector
     {
+        [Key]
+
         public int Id { get; set; }
         [Required(ErrorMessage ="Debe proporcionar un valor para la Marca")]
         [StringLength(24)]
@@ -13,7 +15,11 @@ namespace WebApp.Models
         [Required(ErrorMessage ="Debe proporcionar un valor para el Número de Serie")]
         public string NSerie { get; set; }
         public SituacionProyect Situacion { get; set; }
+        = SituacionProyect.Bueno;
+        [DataType(DataType.Date)]
         public DateTime FechaAlta { get; set; }
+        [DataType(DataType.Date)]
+
         public DateTime? FechaBaja { get; set; }
     }
 
