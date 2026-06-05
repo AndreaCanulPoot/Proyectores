@@ -8,15 +8,15 @@ namespace WebApp.Services
 
         public void AddProyector(Proyector proyector)
         {
-            if (proyector != null) 
-            { 
+            if (proyector != null)
+            {
                 _proyectores.Add(proyector);
             }
         }
 
         public IEnumerable<Proyector> GetAll()
         {
-            return _proyectores;        
+            return _proyectores;
         }
 
 
@@ -79,6 +79,24 @@ namespace WebApp.Services
             return proyectores;
         }
 
+        public Proyector? GetProyectorById(int id)
+        {
+            throw new NotImplementedException();
+        }
 
+        public void Update(Proyector proyector)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Proyector? Delete(Proyector proyector)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
